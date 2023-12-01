@@ -1,7 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setReportSubmitted } from "../reducers/reportSlice";
 
+// Custom FileInput component for overwriting the button from type file
+const FileInput = ({ handleChange }) => {
+  const fileInputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  return (
+    <div className="relative">
+      <input
+        className="hidden"
+        type="file"
+        name="photo"
+        ref={fileInputRef}
+        onChange={handleChange}
+        accept="image/*"
+      />
+      <div className=" flex justify-center">
+        <button
+          className="bg-gray-700 hover:bg-gray-600 text-white px-2 py-1 text-sm"
+          onClick={handleButtonClick}
+        >
+          Välj fil
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Main ReportForm component
 export default function ReportForm({ onReportSubmit }) {
   const dispatch = useDispatch();
   const reportSubmitted = useSelector((state) => state.report.reportSubmitted);
@@ -101,16 +132,10 @@ export default function ReportForm({ onReportSubmit }) {
             required
           />
         </label>
-        <label className="block mb-2">
-          Photo:
-          <input
-            className="form-input mt-1 block w-full"
-            type="file"
-            name="photo"
-            onChange={handleChange}
-            accept="image/*"
-          />
-        </label>
+        <div className="flex items-center">
+          <label className="mr-2">Photo:</label>
+          <FileInput handleChange={handleChange} />
+        </div>
         <div className="flex justify-center mt-8">
           <button
             className="bg-orange-600 text-white p-2 rounded hover:bg-orange-500"
