@@ -1,63 +1,24 @@
-// Home.jsx
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setReportSubmitted } from "../reducers/reportSlice";
+import React, { useState } from "react";
 import Hero from "../components/Hero";
+import ReportForm from "../components/ReportForm";
+import pic from "../assets/icon-c.png";
+import SavedReports from "../components/SavedReports";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const reportSubmitted = useSelector((state) => state.report.reportSubmitted);
+  const [reportSubmitted, setReportSubmitted] = useState(false);
+  const [showReports, setShowReports] = useState(false);
 
-  const [formData, setFormData] = useState(() => {
-    // Load data from localStorage on component mount
-    const storedData = localStorage.getItem("formData");
-    return storedData
-      ? JSON.parse(storedData)
-      : {
-          name: "",
-          surname: "",
-          place: "",
-          description: "",
-          photo: null,
-        };
-  });
-
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === "photo" ? files[0] : value,
-    });
+  const handleReportSubmit = () => {
+    setReportSubmitted(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Handle form submission logic here
-    // You can access the form data from the 'formData' state
-
-    // Save data to localStorage
-    localStorage.setItem("formData", JSON.stringify(formData));
-
-    // Dispatch the action to update the state
-    dispatch(setReportSubmitted());
-
-    // Clear the form
-    setFormData({
-      name: "",
-      surname: "",
-      place: "",
-      description: "",
-      photo: null,
-    });
+  const handleShowReports = () => {
+    setShowReports(true);
   };
 
-  // Clear localStorage when the report is submitted
-  useEffect(() => {
-    if (reportSubmitted) {
-      localStorage.removeItem("formData");
-    }
-  }, [reportSubmitted]);
+  const handleCloseReports = () => {
+    setShowReports(false);
+  };
 
   return (
     <div>
@@ -68,75 +29,44 @@ const Home = () => {
         buttonText="Learn more"
         buttonLink="/about"
       />
-      <div className="bg-red-300 min-h-screen flex items-center justify-center">
-        <form
-          className="bg-white p-8 rounded shadow-md max-w-md w-full"
-          onSubmit={handleSubmit}
-        >
-          {reportSubmitted && (
-            <div className="text-green-600 mb-4">
-              Report submitted successfully!
-            </div>
-          )}
-          <h2 className="text-2xl font-bold mb-4">Report Abuse</h2>
-          <label className="block mb-2">
-            Name:
-            <input
-              className="form-input mt-1 block w-full"
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </label>
-          <label className="block mb-2">
-            Surname:
-            <input
-              className="form-input mt-1 block w-full"
-              type="text"
-              name="surname"
-              value={formData.surname}
-              onChange={handleChange}
-            />
-          </label>
-          <label className="block mb-2">
-            Place (required):
-            <input
-              className="form-input mt-1 block w-full"
-              type="text"
-              name="place"
-              value={formData.place}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label className="block mb-2">
-            Description (required):
-            <textarea
-              className="form-textarea mt-1 block w-full"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label className="block mb-2">
-            Photo:
-            <input
-              className="form-input mt-1 block w-full"
-              type="file"
-              name="photo"
-              onChange={handleChange}
-              accept="image/*"
-            />
-          </label>
-          <button
-            className="bg-orange-600 text-white p-2 rounded hover:bg-orange-500"
-            type="submit"
-          >
-            Send Report
-          </button>
-        </form>
+      <div className="container mx-auto p-8">
+        <h2 className="text-3xl font-bold mb-4">Report Animal Abuse</h2>
+        <div className="flex mb-4 ">
+          <p className="mt-8 text-md">
+            If you've witnessed any form of animal cruelty or suspect that an
+            animal is in distress, we encourage you to report it. Your actions
+            can make a difference in the lives of animals. You can choose to
+            remain anonymous while reporting, ensuring that your concern is
+            heard without revealing your identity.
+          </p>
+          <img src={pic} className="mr-4 h-48" />
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center my-6">
+        <ReportForm onReportSubmit={handleReportSubmit} />
+        {reportSubmitted && (
+          <div className="bg-red-300">
+            {showReports ? (
+              <div>
+                <SavedReports />
+                <button
+                  className="bg-red-500 text-white p-2 rounded hover:bg-red-400"
+                  onClick={handleCloseReports}
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
+              <button
+                className="bg-blue-500 text-white p-2 rounded hover:bg-blue-400"
+                onClick={handleShowReports}
+              >
+                Show my Reports
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

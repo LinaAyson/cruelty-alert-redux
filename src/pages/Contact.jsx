@@ -1,59 +1,10 @@
 // Contact.jsx
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setFormSubmitted } from "../reducers/contactSlice"; // Assuming you have a contactSlice
+
 import Hero from "../components/Hero";
+import ContactForm from "../components/ContactForm";
 
 const Contact = () => {
-  const dispatch = useDispatch();
-  const formSubmitted = useSelector((state) => state.contact.formSubmitted);
-
-  const [formData, setFormData] = useState(() => {
-    const storedData = localStorage.getItem("contactFormData");
-    return storedData
-      ? JSON.parse(storedData)
-      : {
-          name: "",
-          email: "",
-          message: "",
-        };
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Handle form submission logic here
-    // You can access the form data from the 'formData' state
-
-    // Save data to localStorage
-    localStorage.setItem("contactFormData", JSON.stringify(formData));
-
-    // Dispatch the action to update the state
-    dispatch(setFormSubmitted());
-
-    // Clear the form
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-  };
-
-  // Clear localStorage when the form is submitted
-  useEffect(() => {
-    if (formSubmitted) {
-      localStorage.removeItem("contactFormData");
-    }
-  }, [formSubmitted]);
-
   return (
     <div>
       <Hero
@@ -73,54 +24,8 @@ const Contact = () => {
             reach out to us. Use the contact form below, and we'll get back to
             you as soon as possible.
           </p>
-          {/* Add your contact form component here */}
+          <ContactForm />
         </div>
-        <form
-          className="bg-white p-8 rounded shadow-md mx-auto max-w-md w-full"
-          onSubmit={handleSubmit}
-        >
-          {formSubmitted && (
-            <div className="text-green-600 mb-4">
-              Email was successfully sent!
-            </div>
-          )}
-          <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-          <label className="block mb-2">
-            Name:
-            <input
-              className="form-input mt-1 block w-full"
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </label>
-          <label className="block mb-2">
-            Email:
-            <input
-              className="form-input mt-1 block w-full"
-              type="text"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </label>
-          <label className="block mb-2">
-            Message:
-            <textarea
-              className="form-textarea mt-1 block w-full"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-            />
-          </label>
-          <button
-            className="bg-orange-600 text-white p-2 rounded hover:bg-orange-500"
-            type="submit"
-          >
-            Send Message
-          </button>
-        </form>
       </div>
     </div>
   );
