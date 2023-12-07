@@ -1,17 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const loadReportsFromLocalStorage = () => {
+  try {
+    const storedReports = localStorage.getItem("reports");
+    return storedReports ? JSON.parse(storedReports) : [];
+  } catch (error) {
+    console.error("Error loading reports from localStorage:", error);
+    return [];
+  }
+};
+
+const saveReportsToLocalStorage = (reports) => {
+  try {
+    localStorage.setItem("reports", JSON.stringify(reports));
+  } catch (error) {
+    console.error("Error saving reports to localStorage:", error);
+  }
+};
+
 const reportSlice = createSlice({
   name: "report",
   initialState: {
     reportSubmitted: false,
-    // Array to store submitted reports
-    reports: [],
+    reports: loadReportsFromLocalStorage(),
   },
   reducers: {
     setReportSubmitted: (state, action) => {
       state.reportSubmitted = true;
-      // Adding the submitted report to the array
       state.reports.push(action.payload);
+      saveReportsToLocalStorage(state.reports);
     },
     // ... other reducers
   },

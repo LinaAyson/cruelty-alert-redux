@@ -14,18 +14,15 @@ const Contact = () => {
         buttonText="Contact"
         buttonLink="/about"
       />
-      <div className="container mx-auto p-8">
-        {/* Add more content, e.g., contact form */}
-        <div className="container mx-auto p-8">
-          <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-          <p className="mb-6">
-            Whether you have questions about our organization, want to ask about
-            laws regarding animal abuse, or need more information, feel free to
-            reach out to us. Use the contact form below, and we'll get back to
-            you as soon as possible.
-          </p>
-          <ContactForm />
-        </div>
+      <div className="container p-8 mx-auto">
+        <h2 className="mb-4 text-3xl font-bold">Questions?</h2>
+        <p className="mb-6">
+          Whether you have questions about our organization, want to ask about
+          laws regarding animal abuse, or need more information, feel free to
+          reach out to us. Use the contact form below, and we'll get back to you
+          as soon as possible.
+        </p>
+        <ContactForm />
       </div>
     </div>
   );

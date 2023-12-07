@@ -1,4 +1,3 @@
-
 import { configureStore } from '@reduxjs/toolkit';
 import reportReducer from './reducers/reportSlice';
 import contactReducer from './reducers/contactSlice';
