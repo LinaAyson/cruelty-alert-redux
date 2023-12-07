@@ -33,7 +33,7 @@ export default function ContactForm() {
     // Access the form data from the 'formData' state
 
     // Save data to localStorage
-    localStorage.setItem("contactFormData", JSON.stringify(formData));
+    // localStorage.setItem("contactFormData", JSON.stringify(formData));
 
     // Dispatch the action to update the state
     dispatch(setFormSubmitted());
@@ -58,7 +58,7 @@ export default function ContactForm() {
       {/* <img src={pic} alt="Cruelty Alert Icon" className="h-32" /> */}
       <div className="w-full lg:w-1/2">
         <form
-          className="p-8 border rounded shadow-xl  bg-zinc-50"
+          className="p-8 border rounded shadow-xl bg-zinc-900 "
           onSubmit={handleSubmit}
         >
           {formSubmitted && (
@@ -70,7 +70,7 @@ export default function ContactForm() {
           <label className="block mb-2">
             Name:
             <input
-              className="block w-full mt-1 bg-white border border-gray-200 form-input"
+              className="block w-full mt-1 text-black bg-white border border-gray-200 form-input"
               type="text"
               name="name"
               value={formData.name}
@@ -80,7 +80,7 @@ export default function ContactForm() {
           <label className="block mb-2">
             Email:*
             <input
-              className="block w-full mt-1 bg-white border border-gray-200 form-input"
+              className="block w-full mt-1 text-black bg-white border border-gray-200 form-input"
               type="text"
               name="email"
               value={formData.email}
@@ -91,7 +91,7 @@ export default function ContactForm() {
           <label className="block mb-2">
             Message:
             <textarea
-              className="block w-full mt-1 bg-white border border-gray-200 form-textarea"
+              className="block w-full mt-1 text-black bg-white border border-gray-200 form-textarea"
               name="message"
               value={formData.message}
               onChange={handleChange}

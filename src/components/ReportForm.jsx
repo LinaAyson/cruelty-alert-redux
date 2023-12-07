@@ -98,7 +98,7 @@ export default function ReportForm({ onReportSubmit }) {
   return (
     <div className="flex justify-center w-full my-4">
       <form
-        className="w-full max-w-lg p-8 border rounded shadow-xl bg-zinc-50 "
+        className="w-full max-w-lg p-8 border rounded shadow-xl bg-zinc-900 "
         onSubmit={handleSubmit}
       >
         {reportSubmitted && (
@@ -107,10 +107,11 @@ export default function ReportForm({ onReportSubmit }) {
           </div>
         )}
         <h2 className="mb-4 text-2xl font-bold">Report Abuse</h2>
+
         <label className="block mb-2">
           Name:
           <input
-            className="block w-full mt-1 bg-white border border-gray-200 form-input"
+            className="block w-full mt-1 text-black bg-white border border-gray-200 form-input"
             type="text"
             name="name"
             value={formData.name}
@@ -120,7 +121,7 @@ export default function ReportForm({ onReportSubmit }) {
         <label className="block mb-2">
           Surname:
           <input
-            className="block w-full mt-1 bg-white border border-gray-200 form-input"
+            className="block w-full mt-1 text-black bg-white border border-gray-200 form-input"
             type="text"
             name="surname"
             value={formData.surname}
@@ -130,7 +131,7 @@ export default function ReportForm({ onReportSubmit }) {
         <label className="block mb-2">
           Place:*
           <input
-            className="block w-full mt-1 bg-white border border-gray-200 form-input"
+            className="block w-full mt-1 text-black bg-white border border-gray-200 form-input"
             type="text"
             name="place"
             value={formData.place}
@@ -141,18 +142,18 @@ export default function ReportForm({ onReportSubmit }) {
         <label className="block mb-2">
           Description:*
           <textarea
-            className="block w-full mt-1 bg-white border border-gray-200 form-textarea"
+            className="block w-full mt-1 text-black bg-white border border-gray-200 form-textarea"
             name="description"
             value={formData.description}
             onChange={handleChange}
             required
           />
         </label>
+
         <div className="flex items-center">
           <label className="mr-2">Photo:</label>
           <FileInput handleChange={handleChange} />
         </div>
-
         <div className="flex justify-center mt-8">
           <button
             className="rounded px-4 pb-2 pt-2.5 text-xs font-medium uppercase text-white border bg-orange-600 hover:bg-orange-500"

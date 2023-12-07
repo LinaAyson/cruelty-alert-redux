@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="">
-      <ul className="flex py-6 bg-rose-950 justify-evenly text-neutral-200">
+      <ul className="flex py-8 bg-rose-950 justify-evenly text-neutral-200">
         <li>
           <Link to="/">Home</Link>
         </li>

@@ -33,14 +33,26 @@ const Home = () => {
         buttonLink="/about"
       />
       <SectionTextImage />
-      <ReportForm onReportSubmit={handleReportSubmit} />
+      <div className="flex flex-col lg:flex-row lg:px-32">
+        {/* ReportForm component */}
+        <div className="p-4 lg:w-1/2">
+          <ReportForm onReportSubmit={handleReportSubmit} />
+        </div>
+        <div className="p-4 lg:w-1/2 ">
+          <img
+            className="object-cover w-full h-full"
+            src="https://images.unsplash.com/photo-1592664858934-40ca080ab56b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="unhappy dogs"
+          />
+        </div>
+      </div>
       {reportSubmitted && (
-        <div className="">
+        <div className="mt-4 text-center">
           {showReports ? (
             <SavedReports onCloseReports={handleCloseReports} />
           ) : (
             <button
-              className="p-2 text-sm font-semibold text-black border border-stone-500 "
+              className="p-2 text-sm font-semibold border border-stone-100"
               onClick={handleShowReports}
             >
               Show my Reports

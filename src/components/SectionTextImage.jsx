@@ -10,7 +10,7 @@ export default function SectionTextImage() {
           Report and combat animal cruelty with us. Speak up for the voiceless.
           Together, let's create a world where animals are treated with kindness
           and respect. Join the movement for a brighter, compassionate future.
-          #ReportForChange
+          <span className="font-bold"> #ReportForChange </span>
         </p>
       </div>
       <img
