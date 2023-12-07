@@ -6,7 +6,8 @@ import { setReportSubmitted } from "../reducers/reportSlice";
 const FileInput = ({ handleChange }) => {
   const fileInputRef = useRef(null);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e) => {
+    e.preventDefault();
     fileInputRef.current.click();
   };
 
@@ -23,7 +24,7 @@ const FileInput = ({ handleChange }) => {
       <div className="flex justify-center">
         <button
           className="px-2 py-1 text-sm text-white bg-gray-700 hover:bg-gray-600"
-          onClick={handleButtonClick}
+          onClick={(e) => handleButtonClick(e)}
         >
           Choose file
         </button>
