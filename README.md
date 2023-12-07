@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # cruelty-alert-redux
 Final project 
 =======
