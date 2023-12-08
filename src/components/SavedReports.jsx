@@ -18,7 +18,7 @@ const SavedReports = ({ onCloseReports, onShowReports }) => {
               <p>Surname: {report.surname}</p>
               <p>Place: {report.place}</p>
               <p>Description: {report.description}</p>
-              <p className="text-orange-600">
+              <p className="text-orange-400">
                 Reported in: {report.submissionTime}
               </p>
             </li>

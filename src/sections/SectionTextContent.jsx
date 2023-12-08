@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextContent = ({ subTitle, text }) => {
+const SectionTextContent = ({ subTitle, text }) => {
   return (
     <section>
       <div className="container p-10 mx-auto">
@@ -11,4 +11,4 @@ const TextContent = ({ subTitle, text }) => {
   );
 };
 
-export default TextContent;
+export default SectionTextContent;

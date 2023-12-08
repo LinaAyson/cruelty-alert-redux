@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import Hero from "../components/Hero";
 import ReportForm from "../components/ReportForm";
 import SavedReports from "../components/SavedReports";
-import SectionTextImage from "../components/SectionTextImage";
-import SectionInformation from "../components/SectionInformation";
+import icon from "../assets/icon-img.png";
+import SectionTextImgContent from "../Sections/SectionTextImgContent";
 
 const Home = () => {
   const [reportSubmitted, setReportSubmitted] = useState(
@@ -33,7 +33,15 @@ const Home = () => {
         buttonText="Learn more"
         buttonLink="/about"
       />
-      <SectionTextImage />
+      <SectionTextImgContent
+        subTitle="Cruelty Alert"
+        text="Report and combat animal cruelty with us. Speak up for the voiceless.
+        Together, let's create a world where animals are treated with kindness
+          and respect. Join the movement for a brighter, compassionate future.
+         "
+        imageSrc={icon}
+        altText="animal cruelty icon"
+      />
       <div className="container flex flex-col pb-4 mx-auto lg:flex-row lg:items-center">
         <div className="order-2 sm:my-4 lg:order-1 lg:w-1/2 lg:mr-4">
           <img

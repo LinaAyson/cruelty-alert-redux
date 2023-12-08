@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
-import TextContent from "../Sections/TextContent";
+import SectionTextContent from "../Sections/SectionTextContent";
 
 export default function About() {
   return (
@@ -12,21 +12,21 @@ export default function About() {
         buttonText="Learn more"
         buttonLink="/about"
       />
-      <TextContent
+      <SectionTextContent
         subTitle="Our Mission"
         text=" Cruelty Alert is dedicated to creating a world where animals are
            treated with compassion, respect, and dignity. We strive to raise
            awareness about animal abuse, provide a platform for reporting
           incidents, and work towards positive change."
       />
-      <TextContent
+      <SectionTextContent
         subTitle="What We Do"
         text="Through education, advocacy, and community engagement, we aim to
            combat animal cruelty at its roots. Our organization collaborates with
            individuals, communities, and authorities to ensure the well-being of
            animals and promote a harmonious coexistence."
       />
-      <TextContent
+      <SectionTextContent
         subTitle="Understanding Animal Abuse"
         text=" Animal abuse is a pressing issue that demands attention. Learn more
                 about the signs of abuse, its impact on animals, and how together, we
