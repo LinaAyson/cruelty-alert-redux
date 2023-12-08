@@ -12,13 +12,13 @@ const SavedReports = ({ onCloseReports, onShowReports }) => {
           {savedReports.map((report, index) => (
             <li
               key={index}
-              className="p-4 mb-2 border border-gray-400 rounded-sm"
+              className="p-4 mb-2 border rounded-sm border-zinc-800"
             >
               <p>Name: {report.name}</p>
               <p>Surname: {report.surname}</p>
               <p>Place: {report.place}</p>
               <p>Description: {report.description}</p>
-              <p className="text-green-600">
+              <p className="text-orange-600">
                 Reported in: {report.submissionTime}
               </p>
             </li>
@@ -26,14 +26,6 @@ const SavedReports = ({ onCloseReports, onShowReports }) => {
         </ul>
       </div>
       <div className="flex justify-end text-white">
-        {/* {onCloseReports && (
-          <button
-            className="p-2 mt-4 text-sm font-semibold border border-stone-500"
-            onClick={onCloseReports}
-          >
-            Close my reports
-          </button>
-        )} */}
         {onShowReports && (
           <button
             className="p-2 text-sm font-semibold border border-stone-500 "
