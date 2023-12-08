@@ -12,11 +12,11 @@ const Hero = ({ imageUrl, subTitle, text, buttonText, buttonLink }) => {
   return (
     <div style={dynamicStyle}>
       <div className="container flex flex-col items-center justify-center mx-auto text-white">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
           {subTitle}
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl">{text}</p>
-        <div className="flex justify-center mx-auto pt-6">
+        <div className="flex justify-center pt-6 mx-auto">
           <button className="px-8 py-3 text-sm text-white uppercase bg-orange-700 rounded-md hover:bg-orange-600">
             {buttonText}
           </button>
