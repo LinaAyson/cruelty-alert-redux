@@ -5,15 +5,21 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <header>
-      <ul className="flex py-8 bg-rose-950 justify-evenly text-neutral-200">
+      <ul className="flex py-8 text-lg font-bold bg-rose-950 justify-evenly text-neutral-200 ">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" className="hover:underline">
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/about">About Animal Cruelty</Link>
+          <Link to="/about" className="hover:underline">
+            About Animal Cruelty
+          </Link>
         </li>
         <li>
-          <Link to="/contact">Contact</Link>
+          <Link to="/contact" className="hover:underline">
+            Contact
+          </Link>
         </li>
       </ul>
     </header>

@@ -4,9 +4,9 @@ import pic from "../assets/icon-img.png";
 export default function SectionTextImage() {
   return (
     <div className="container flex flex-col-reverse items-center justify-center p-8 mx-auto lg:flex-row">
-      <div className="max-w-2xl lg:mr-4">
-        <h2 className="mb-4 text-4xl font-bold">Cruelty Alert</h2>
-        <p className="mb-4 text-lg">
+      <div className="max-w-2xl ">
+        <h2 className="mb-4 text-5xl font-bold text-center ">Cruelty Alert</h2>
+        <p className="mb-4 text-xl ">
           Report and combat animal cruelty with us. Speak up for the voiceless.
           Together, let's create a world where animals are treated with kindness
           and respect. Join the movement for a brighter, compassionate future.

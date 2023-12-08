@@ -58,7 +58,7 @@ export default function ContactForm() {
       {/* <img src={pic} alt="Cruelty Alert Icon" className="h-32" /> */}
       <div className="w-full lg:w-1/2">
         <form
-          className="p-8 border rounded shadow-xl bg-zinc-900 "
+          className="p-8 border rounded shadow-xl bg-zinc-900 border-zinc-700"
           onSubmit={handleSubmit}
         >
           {formSubmitted && (

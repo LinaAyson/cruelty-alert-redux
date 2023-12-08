@@ -67,8 +67,6 @@ export default function ReportForm({ onReportSubmit }) {
       minute: "2-digit",
     });
 
-    // Form submission logic
-
     // Save my data to localStorage with the current date and time
     const reportData = {
       ...formData,
@@ -98,7 +96,7 @@ export default function ReportForm({ onReportSubmit }) {
   return (
     <div className="flex justify-center ">
       <form
-        className="w-full max-w-lg p-8 border rounded shadow-xl bg-zinc-900" // Set explicit height
+        className="w-full max-w-lg p-8 border rounded shadow-2xl border-zinc-700 bg-zinc-900" // Set explicit height
         onSubmit={handleSubmit}
       >
         {reportSubmitted && (
@@ -156,7 +154,7 @@ export default function ReportForm({ onReportSubmit }) {
         </div>
         <div className="flex justify-center mt-8">
           <button
-            className="rounded px-4 pb-2 pt-2.5 text-xs font-medium uppercase text-white border bg-orange-600 hover:bg-orange-500"
+            className="rounded px-4 pb-2 pt-2.5 text-xs font-medium uppercase text-white  bg-orange-600 hover:bg-orange-500"
             type="submit"
           >
             send Report
