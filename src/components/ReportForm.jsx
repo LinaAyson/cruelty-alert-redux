@@ -98,7 +98,7 @@ export default function ReportForm({ onReportSubmit }) {
   return (
     <div className="flex justify-center w-full my-4">
       <form
-        className="w-full max-w-lg p-8 border rounded shadow-xl bg-zinc-900 "
+        className="w-full max-w-lg p-8 border rounded shadow-xl bg-zinc-900" // Set explicit height
         onSubmit={handleSubmit}
       >
         {reportSubmitted && (
