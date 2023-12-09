@@ -45,6 +45,9 @@ export default function ReportForm({ onReportSubmit }) {
   });
   const [recaptchaValue, setRecaptchaValue] = useState(null);
 
+  const REACT_APP_RECAPTCHA_SITE_KEY =
+    "6LcylikpAAAAACqFmOzmca-yvWonSpSYPImwmyYi";
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setFormData({
@@ -151,7 +154,7 @@ export default function ReportForm({ onReportSubmit }) {
         <div className="mt-4 ">
           <ReCAPTCHA
             className="rounded shadow-md "
-            sitekey="6LcylikpAAAAACqFmOzmca-yvWonSpSYPImwmyYi" // Replace with your actual site key
+            sitekey={REACT_APP_RECAPTCHA_SITE_KEY}
             onChange={handleRecaptchaChange}
           />
         </div>
