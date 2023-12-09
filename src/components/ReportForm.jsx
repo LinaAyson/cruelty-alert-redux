@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setReportSubmitted } from "../reducers/reportSlice";
+import ReCAPTCHA from "react-google-recaptcha";
 
-// my custom FileInput component for overwriting the button from 'type' file
 const FileInput = ({ handleChange }) => {
   const fileInputRef = useRef(null);
 
@@ -33,11 +33,9 @@ const FileInput = ({ handleChange }) => {
   );
 };
 
-// main ReportForm component
 export default function ReportForm({ onReportSubmit }) {
   const dispatch = useDispatch();
   const reportSubmitted = useSelector((state) => state.report.reportSubmitted);
-  const [reports, setReports] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -45,6 +43,7 @@ export default function ReportForm({ onReportSubmit }) {
     description: "",
     photo: null,
   });
+  const [recaptchaValue, setRecaptchaValue] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -54,10 +53,13 @@ export default function ReportForm({ onReportSubmit }) {
     });
   };
 
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaValue(value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Get the current date and time
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleString([], {
       year: "numeric",
@@ -67,18 +69,13 @@ export default function ReportForm({ onReportSubmit }) {
       minute: "2-digit",
     });
 
-    // Save my data to localStorage with the current date and time
     const reportData = {
       ...formData,
       submissionTime: formattedDate,
     };
-    // reports.push(reportData);
-    // localStorage.setItem("formData", JSON.stringify(reports));
 
-    // Dispatch the action to update the state with the submitted report
     dispatch(setReportSubmitted(reportData));
 
-    // Clear the form fields
     setFormData({
       name: "",
       surname: "",
@@ -87,7 +84,6 @@ export default function ReportForm({ onReportSubmit }) {
       photo: null,
     });
 
-    // Trigger the callback if provided
     if (onReportSubmit) {
       onReportSubmit();
     }
@@ -96,7 +92,7 @@ export default function ReportForm({ onReportSubmit }) {
   return (
     <div className="flex justify-center ">
       <form
-        className="w-full max-w-lg p-8 border rounded shadow-2xl border-zinc-700 bg-zinc-900" // Set explicit height
+        className="w-full max-w-lg p-8 border rounded shadow-2xl border-zinc-700 bg-zinc-900"
         onSubmit={handleSubmit}
       >
         {reportSubmitted && (
@@ -152,10 +148,18 @@ export default function ReportForm({ onReportSubmit }) {
           <label className="mr-2">Photo:</label>
           <FileInput handleChange={handleChange} />
         </div>
+        <div className="mt-4 ">
+          <ReCAPTCHA
+            className="rounded shadow-md "
+            sitekey="6LcylikpAAAAACqFmOzmca-yvWonSpSYPImwmyYi" // Replace with your actual site key
+            onChange={handleRecaptchaChange}
+          />
+        </div>
         <div className="flex justify-center mt-8">
           <button
             className="rounded px-4 pb-2 pt-2.5 text-xs font-medium uppercase text-white  bg-orange-600 hover:bg-orange-500"
             type="submit"
+            disabled={recaptchaValue === null}
           >
             send Report
           </button>

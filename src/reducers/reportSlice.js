@@ -14,7 +14,7 @@ const saveReportsToLocalStorage = (reports) => {
   try {
     localStorage.setItem("reports", JSON.stringify(reports));
   } catch (error) {
-    console.error("Error saving reports to localStorage:", error);
+    console.error("Error saving", error);
   }
 };
 
@@ -30,7 +30,6 @@ const reportSlice = createSlice({
       state.reports.push(action.payload);
       saveReportsToLocalStorage(state.reports);
     },
-    // ... other reducers
   },
 });
 
