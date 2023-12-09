@@ -158,8 +158,17 @@ export default function ReportForm({ onReportSubmit }) {
             onChange={handleRecaptchaChange}
           />
         </div>
+        {/* Conditionally render message if reCAPTCHA value is null */}
+        {recaptchaValue === null && (
+          <div className="mt-2 text-red-4 00">
+            Please complete the reCAPTCHA verification before submitting the
+            report.
+          </div>
+        )}
+
         <div className="flex justify-center mt-8">
           <button
+            placeholder="Verify that youre not a robot"
             className="rounded px-4 pb-2 pt-2.5 text-xs font-medium uppercase text-white  bg-orange-600 hover:bg-orange-500"
             type="submit"
             disabled={recaptchaValue === null}

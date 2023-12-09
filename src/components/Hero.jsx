@@ -1,5 +1,12 @@
 import React from "react";
-const Hero = ({ imageUrl, subTitle, text, buttonText, buttonLink }) => {
+const Hero = ({
+  imageUrl,
+  subTitle,
+  text,
+  buttonText,
+  buttonLink,
+  altText,
+}) => {
   const dynamicStyle = {
     backgroundImage: `url(${imageUrl})`,
     backgroundSize: "cover",
@@ -7,6 +14,7 @@ const Hero = ({ imageUrl, subTitle, text, buttonText, buttonLink }) => {
     backgroundRepeat: "no-repeat",
     textAlign: "center",
     padding: "10rem 2rem",
+    altText: "",
   };
 
   return (

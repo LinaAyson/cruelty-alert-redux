@@ -11,6 +11,7 @@ export default function About() {
         text="Working Towards a Compassionate World"
         buttonText="Learn more"
         buttonLink="/about"
+        altText="Sheep on a road"
       />
       <SectionTextContent
         subTitle="Our Mission"

@@ -13,6 +13,7 @@ const Contact = () => {
         text="Have questions or concerns? We're here to help"
         buttonText="Contact"
         buttonLink="/about"
+        altText="Cows looking in the camera"
       />
       <div className="container p-8 mx-auto">
         <h2 className="mb-4 text-3xl font-bold">Questions?</h2>
