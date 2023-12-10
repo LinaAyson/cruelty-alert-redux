@@ -4,7 +4,7 @@ import Hero from "../components/Hero";
 import ReportForm from "../components/ReportForm";
 import SavedReports from "../components/SavedReports";
 import icon from "../assets/icon-img.png";
-import SectionTextImgContent from "../Sections/SectionTextImgContent";
+import SectionTextImgContent from "../sections/SectionTextImgContent";
 
 const Home = () => {
   const [reportSubmitted, setReportSubmitted] = useState(
