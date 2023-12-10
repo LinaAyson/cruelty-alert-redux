@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "../components/Hero";
 import SectionTextContent from "../Sections/SectionTextContent";
+import { LottieComponent } from "../components/LottieComponent";
 
 export default function About() {
   return (
@@ -13,6 +14,8 @@ export default function About() {
         buttonLink="/about"
         altText="Sheep on a road"
       />
+      <LottieComponent />
+
       <SectionTextContent
         subTitle="Our Mission"
         text=" Cruelty Alert is dedicated to creating a world where animals are

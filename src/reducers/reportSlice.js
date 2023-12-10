@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const loadReportsFromLocalStorage = () => {
+const loadReports = () => {
   try {
     const storedReports = localStorage.getItem("reports");
     return storedReports ? JSON.parse(storedReports) : [];
@@ -10,7 +10,7 @@ const loadReportsFromLocalStorage = () => {
   }
 };
 
-const saveReportsToLocalStorage = (reports) => {
+const saveReports = (reports) => {
   try {
     localStorage.setItem("reports", JSON.stringify(reports));
   } catch (error) {
@@ -22,13 +22,13 @@ const reportSlice = createSlice({
   name: "report",
   initialState: {
     reportSubmitted: false,
-    reports: loadReportsFromLocalStorage(),
+    reports: loadReports(),
   },
   reducers: {
     setReportSubmitted: (state, action) => {
       state.reportSubmitted = true;
       state.reports.push(action.payload);
-      saveReportsToLocalStorage(state.reports);
+      saveReports(state.reports);
     },
   },
 });

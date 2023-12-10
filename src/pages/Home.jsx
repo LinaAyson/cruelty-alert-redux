@@ -58,12 +58,12 @@ const Home = () => {
       </div>
 
       {reportSubmitted && (
-        <div className="mt-4 text-center">
+        <div className="my-4 text-center">
           {showReports ? (
             <SavedReports onCloseReports={handleCloseReports} />
           ) : (
             <button
-              className="p-2 text-sm font-semibold border border-stone-100"
+              className="p-2 mb-4 text-sm font-semibold border border-stone-100"
               onClick={handleShowReports}
             >
               Show my Reports

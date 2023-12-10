@@ -105,7 +105,7 @@ export default function ReportForm({ onReportSubmit }) {
         )}
         <h2 className="mb-4 text-2xl font-bold">Report Abuse</h2>
 
-        <label className="block mb-2">
+        <label className="block mb-2" htmlFor="name">
           Name:
           <input
             className="block w-full mt-1 text-black bg-white border border-gray-200 form-input"
@@ -160,7 +160,7 @@ export default function ReportForm({ onReportSubmit }) {
         </div>
         {/* Conditionally render message if reCAPTCHA value is null */}
         {recaptchaValue === null && (
-          <div className="mt-2 text-red-4 00">
+          <div className="mt-2 text-sm ">
             Please complete the reCAPTCHA verification before submitting the
             report.
           </div>

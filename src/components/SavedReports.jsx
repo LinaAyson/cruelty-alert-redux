@@ -25,16 +25,6 @@ const SavedReports = ({ onCloseReports, onShowReports }) => {
           ))}
         </ul>
       </div>
-      <div className="flex justify-end text-white">
-        {onShowReports && (
-          <button
-            className="p-2 text-sm font-semibold border border-stone-500 "
-            onClick={onShowReports}
-          >
-            Show my Reports
-          </button>
-        )}
-      </div>
     </div>
   );
 };
