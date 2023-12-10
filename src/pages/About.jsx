@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
-import SectionTextContent from "../Sections/SectionTextContent";
+import SectionTextContent from "../sections/SectionTextContent";
 import { LottieComponent } from "../components/LottieComponent";
 
 export default function About() {
