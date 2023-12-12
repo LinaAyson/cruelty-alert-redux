@@ -44,8 +44,7 @@ export default function ReportForm({ onReportSubmit }) {
     photo: null,
   });
   const [recaptchaValue, setRecaptchaValue] = useState(null);
-
-  // const recapKey = "6LcylikpAAAAACqFmOzmca-yvWonSpSYPImwmyYi";
+  const recapKey = import.meta.env.VITE_RECAPTCHA_KEY;
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -153,7 +152,7 @@ export default function ReportForm({ onReportSubmit }) {
         <div className="mt-4 ">
           <ReCAPTCHA
             className="rounded shadow-md "
-            sitekey={import.meta.env.VITE_RECAPTCHA_KEY}
+            sitekey={recapKey}
             onChange={handleRecaptchaChange}
           />
         </div>
