@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFormSubmitted } from "../reducers/contactSlice";
-import pic from "../assets/icon-img.png";
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -28,12 +27,6 @@ export default function ContactForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Handle form submission logic here
-    // Access the form data from the 'formData' state
-
-    // Save data to localStorage
-    // localStorage.setItem("contactFormData", JSON.stringify(formData));
 
     // Dispatch the action to update the state
     dispatch(setFormSubmitted());

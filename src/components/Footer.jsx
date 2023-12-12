@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -8,15 +10,34 @@ export default function Footer() {
   };
 
   const handleSubscribe = () => {
-    // Handle subscription logic here
-    console.log("Subscribed with email:", email);
+    // Check if the email is non-empty and contains @
+    if (!email || !email.includes("@")) {
+      // Show an error toast
+      toast.error("Please enter a valid email address.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return; // Stop the function if validation fails
+    }
+
+    // Show a success toast
+    toast.success("Successfully subscribed to the newsletter!", {
+      position: "top-right",
+      autoClose: 3000, // Duration in milliseconds
+      className: "toast-message",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
     // Clear the input field after subscribing
-    setEmail("");
-  };
-
-  const handleBlur = () => {
-    // Clear the input field when the user clicks outside
     setEmail("");
   };
 
@@ -31,24 +52,14 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className="relative md:mb-6" data-te-input-wrapper-init>
+            <div className="relative md:mb-6">
               <input
                 type="text"
                 value={email}
                 onChange={handleChange}
-                onBlur={handleBlur}
-                className="peer block min-h-[auto] w-full rounded border border-orange-700 text-white bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none placeholder:text-black [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                id="exampleFormControlInput1"
+                className="w-full px-3 py-2 text-white bg-transparent border border-orange-700 rounded "
                 placeholder="Email address"
               />
-              <label
-                htmlFor="exampleFormControlInput1"
-                className={`pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out ${
-                  email ? "text-white" : "text-white"
-                } peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-white peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none `}
-              >
-                Email address
-              </label>
             </div>
 
             <div className="mb-6 md:mr-auto">

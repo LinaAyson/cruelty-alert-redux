@@ -24,11 +24,7 @@ const Hero = ({
           {subTitle}
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl">{text}</p>
-        <div className="flex justify-center pt-6 mx-auto">
-          <button className="px-8 py-3 text-sm text-white uppercase bg-orange-700 rounded-md hover:bg-orange-600">
-            {buttonText}
-          </button>
-        </div>
+        <div className="flex justify-center pt-6 mx-auto"></div>
       </div>
     </div>
   );
