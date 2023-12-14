@@ -5,7 +5,7 @@ const SavedReports = ({ onCloseReports, onShowReports }) => {
   const savedReports = useSelector((state) => state.report.reports);
 
   return (
-    <div className="max-w-screen-lg p-4 mx-auto mt-6 ">
+    <div className="max-w-screen-lg p-4 mx-auto mt-6">
       <h2 className="mb-4 text-lg font-bold">My filed reports</h2>
       <div className="">
         <ul className="">
@@ -18,6 +18,15 @@ const SavedReports = ({ onCloseReports, onShowReports }) => {
               <p>Surname: {report.surname}</p>
               <p>Place: {report.place}</p>
               <p>Description: {report.description}</p>
+              {report.photo && (
+                <div className="flex items-center justify-center">
+                  <img
+                    src={report.photo}
+                    alt={`Uploaded by ${report.name}`}
+                    className="max-h-48 max-w-48"
+                  />
+                </div>
+              )}
               <p className="text-orange-400">
                 Reported in: {report.submissionTime}
               </p>

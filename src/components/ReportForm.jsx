@@ -44,14 +44,28 @@ export default function ReportForm({ onReportSubmit }) {
     photo: null,
   });
   const [recaptchaValue, setRecaptchaValue] = useState(null);
+
   const recapKey = import.meta.env.VITE_RECAPTCHA_KEY;
 
+  // Storing the file data as a base64-encoded string in my state instead of the entire File object.
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === "photo" ? files[0] : value,
-    });
+
+    if (name === "photo") {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({
+          ...formData,
+          [name]: reader.result, // store the base64 string
+        });
+      };
+      reader.readAsDataURL(files[0]);
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleRecaptchaChange = (value) => {
@@ -167,7 +181,7 @@ export default function ReportForm({ onReportSubmit }) {
         <div className="flex justify-center mt-8">
           <button
             placeholder="Verify that youre not a robot"
-            className="rounded px-4 pb-2 pt-2.5 text-xs font-medium uppercase text-white  bg-orange-600 hover:bg-orange-500"
+            className="rounded px-4 pb-2 pt-2.5 text-xs  cursor-pointer font-medium uppercase text-white  bg-orange-600 hover:bg-orange-500"
             type="submit"
             disabled={recaptchaValue === null}
           >

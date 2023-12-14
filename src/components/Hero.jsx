@@ -6,6 +6,7 @@ const Hero = ({
   buttonText,
   buttonLink,
   altText,
+  textShadow,
 }) => {
   const dynamicStyle = {
     backgroundImage: `url(${imageUrl})`,
@@ -15,12 +16,13 @@ const Hero = ({
     textAlign: "center",
     padding: "10rem 2rem",
     altText: "",
+    textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)", // Add text shadow for better visibility
   };
 
   return (
     <div style={dynamicStyle}>
       <div className="container flex flex-col items-center justify-center mx-auto text-white">
-        <h1 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
+        <h1 className="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl ">
           {subTitle}
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl">{text}</p>

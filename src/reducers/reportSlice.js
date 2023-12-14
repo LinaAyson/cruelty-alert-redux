@@ -27,7 +27,20 @@ const reportSlice = createSlice({
   reducers: {
     setReportSubmitted: (state, action) => {
       state.reportSubmitted = true;
-      state.reports.push(action.payload);
+      const { name, surname, place, description, photo, submissionTime } = action.payload;
+
+      // Create a new report object with photo data
+      const newReport = {
+        name,
+        surname,
+        place,
+        description,
+        photo,
+        submissionTime,
+      };
+
+      // Add the new report to the state and save to local storage
+      state.reports.push(newReport);
       saveReports(state.reports);
     },
   },

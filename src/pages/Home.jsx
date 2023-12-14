@@ -63,7 +63,7 @@ const Home = () => {
             <SavedReports onCloseReports={handleCloseReports} />
           ) : (
             <button
-              className="p-2 mb-4 text-sm font-semibold border border-stone-100"
+              className="p-2 mb-4 text-sm font-semibold border border-stone-100 "
               onClick={handleShowReports}
             >
               Show my Reports
